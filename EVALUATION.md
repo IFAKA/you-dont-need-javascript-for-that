@@ -56,10 +56,17 @@ Use these scenarios to evaluate whether the skill favors the web platform withou
 
 **Expected behavior:** Classify the change as uncertain rather than local, load `integration-impact.md`, and map the known contracts and policy conflict. Stop the rewrite or retain the existing JavaScript until the missing consumers and effective browser requirements are resolved; do not use absent evidence as permission to simplify.
 
+## 10. Current standards and compatibility evidence
+
+**Prompt:** Replace a custom control with a recently shipped HTML, CSS, or browser API feature, but the project supports multiple browser generations and embedded webviews.
+
+**Expected behavior:** Do not answer from model memory or a static reference example. Check the applicable WHATWG, CSSWG, TC39, MDN Browser Compatibility Data, and WAI-ARIA/WCAG sources at task time; record URLs and the checked date; compare support and accessibility behavior with the project's target matrix; keep a fallback or retain JavaScript when evidence is incomplete.
+
 ## Evaluation checklist
 
 - Start from observed behavior and requirements, not from a preferred replacement.
 - Confirm browser targets, accessibility requirements, and failure behavior.
+- Verify current standards, compatibility, and accessibility evidence from authoritative sources.
 - Triage local versus connected risk and complete an impact map before editing.
 - Load only references whose routing conditions match; connected changes must load integration guidance.
 - Choose the smallest safe native solution and state what JavaScript remains.

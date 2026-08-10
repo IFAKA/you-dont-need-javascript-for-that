@@ -40,12 +40,14 @@ No installer script, package manager, build step, or runtime dependency is requi
 The skill instructs Codex to:
 
 1. Audit existing behavior before editing.
-2. Check browser targets and accessibility requirements.
+2. Check browser targets, accessibility requirements, and current standards evidence.
 3. Triage local versus connected risk and map affected contracts before editing.
 4. Load only the references that match the detected risk and feature.
 5. Select the smallest safe native HTML/CSS solution.
 6. Keep minimal JavaScript for dynamic data, application state, cross-field rules, imperative APIs, or compatibility gaps.
 7. Verify behavior, accessibility, fallbacks, integrations, and required browsers.
+
+For feature freshness, the skill checks live standards and compatibility sources at task time; it does not depend on a bundled snapshot or an additional runtime skill.
 
 ## Examples
 
