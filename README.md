@@ -2,7 +2,7 @@
 
 A Codex skill for auditing frontend behavior and replacing unnecessary JavaScript with accessible, maintainable web-platform features. It favors the smallest safe native solution—not JavaScript removal at any cost.
 
-The skill covers semantic HTML, native controls, modern CSS, dialogs, popovers, forms, navigation, media, compatibility, accessibility, fallbacks, and review.
+The skill uses a lean mandatory safety workflow and loads detailed references only when the task needs them. It covers semantic HTML, modern CSS, browser capabilities, compatibility, accessibility, fallbacks, and cross-layer integration impact without assuming a framework.
 
 ## Install
 
@@ -41,9 +41,11 @@ The skill instructs Codex to:
 
 1. Audit existing behavior before editing.
 2. Check browser targets and accessibility requirements.
-3. Select the smallest safe native HTML/CSS solution.
-4. Keep minimal JavaScript for dynamic data, application state, cross-field rules, imperative APIs, or compatibility gaps.
-5. Verify behavior, accessibility, fallbacks, and required browsers.
+3. Triage local versus connected risk and map affected contracts before editing.
+4. Load only the references that match the detected risk and feature.
+5. Select the smallest safe native HTML/CSS solution.
+6. Keep minimal JavaScript for dynamic data, application state, cross-field rules, imperative APIs, or compatibility gaps.
+7. Verify behavior, accessibility, fallbacks, integrations, and required browsers.
 
 ## Examples
 

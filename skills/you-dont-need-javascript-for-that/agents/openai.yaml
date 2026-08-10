@@ -1,4 +1,4 @@
 interface:
   display_name: "You Don’t Need JavaScript for That"
-  short_description: "Replace unnecessary JavaScript with native web features"
-  default_prompt: "Use $you-dont-need-javascript-for-that to audit this frontend behavior and replace only the JavaScript that native HTML and CSS can safely handle."
+  short_description: "Safely replace unnecessary JavaScript with web standards"
+  default_prompt: "Use $you-dont-need-javascript-for-that to audit this frontend behavior, triage risk, map affected contracts, and replace only the JavaScript that native HTML and CSS can safely handle."

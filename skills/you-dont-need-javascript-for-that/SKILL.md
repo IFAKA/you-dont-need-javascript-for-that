@@ -1,6 +1,6 @@
 ---
 name: you-dont-need-javascript-for-that
-description: Audit frontend behavior and replace unnecessary JavaScript with accessible, maintainable native HTML and CSS while retaining minimal JavaScript when requirements demand it. Use for JavaScript-removal requests, native HTML/CSS rewrites, dependency-free UI simplification, or reviews of custom accordions, dialogs, popovers, forms, navigation, responsive behavior, animation, and browser APIs.
+description: Audit frontend behavior and replace unnecessary JavaScript with accessible, maintainable native HTML and CSS while retaining minimal JavaScript when requirements demand it. Use for JavaScript-removal requests, native HTML/CSS rewrites, dependency-free UI simplification, or reviews of custom controls, dialogs, popovers, forms, navigation, responsive behavior, animation, browser APIs, and cross-layer frontend integrations.
 ---
 
 # You Don't Need JavaScript for That
@@ -11,10 +11,12 @@ Prefer the web platform only when it preserves required behavior. Treat fewer mo
 
 1. **Audit before editing.** Trace the current interaction, state, data flow, keyboard behavior, focus, announcements, validation, failure states, and tests. Record observable behavior that must remain.
 2. **Establish constraints.** Find the project's declared browser targets, accessibility standard, design constraints, progressive-enhancement policy, and server-rendering requirements. Do not guess support from feature age.
-3. **Map native candidates.** Identify what semantic HTML, native controls, CSS, or browser capabilities can own. Read only the relevant references below.
-4. **Choose the smallest safe change.** Preserve the public behavior and remove only the JavaScript made redundant by the native primitive. Prefer progressive enhancement over all-or-nothing rewrites.
-5. **Keep necessary JavaScript.** Retain script for dynamic data, application state, cross-field or business validation, analytics, imperative browser APIs, and gaps in required platform support. Explain why each remaining piece belongs.
-6. **Verify.** Run focused tests and inspect keyboard operation, focus order/restoration, accessible names and state, zoom/reflow, reduced motion, no-script or failure behavior, and every required browser.
+3. **Triage risk.** Classify the change as **local** only when behavior, markup, styling, initialization, and consumers are contained in one understood component boundary, even if split across adjacent files. Classify it as **connected** when contracts cross that boundary through runtime composition, rendering layers, bundles, events, DOM replacement, third parties, or conflicting project policies. When uncertain, use connected.
+4. **Pass the impact-map gate.** Before editing, list the changed behavior and every producer, consumer, lifecycle, and policy that can affect it. A local map may be one compact line. A connected map must use [integration-impact.md](references/integration-impact.md); stop or preserve the implementation when a required edge cannot be verified.
+5. **Route references.** Read only the references whose conditions match the task. Never load all references by default.
+6. **Choose the smallest safe change.** Preserve public behavior and remove only JavaScript made redundant by a native primitive. Prefer progressive enhancement over all-or-nothing rewrites.
+7. **Keep necessary JavaScript.** Retain script for dynamic data, application state, cross-field or business validation, analytics, imperative browser APIs, and support gaps. Explain why each remaining piece belongs.
+8. **Verify.** Run project-derived tests and inspect keyboard operation, focus order/restoration, accessible names and state, zoom/reflow, reduced motion, failure behavior, and required browsers.
 
 ## Decision Rules
 
@@ -27,7 +29,10 @@ Prefer the web platform only when it preserves required behavior. Treat fewer mo
 
 ## References
 
-- Read [semantic-html.md](references/semantic-html.md) for document structure, native controls, accordions, navigation, forms, and media semantics.
-- Read [modern-css.md](references/modern-css.md) for layout, selectors, responsive behavior, state, and animation.
-- Read [native-capabilities.md](references/native-capabilities.md) for dialogs, popovers, forms, navigation, media, and browser APIs that may still need minimal orchestration.
-- Read [safe-adoption.md](references/safe-adoption.md) for browser compatibility, accessibility, fallbacks, and review checks.
+| Read | Only when |
+| --- | --- |
+| [semantic-html.md](references/semantic-html.md) | Changing structure, controls, forms, navigation, disclosure, or media semantics |
+| [modern-css.md](references/modern-css.md) | Replacing script-driven layout, responsiveness, selectors, state styling, or animation |
+| [native-capabilities.md](references/native-capabilities.md) | Considering dialogs, popovers, validation, URL state, media, or another browser API |
+| [safe-adoption.md](references/safe-adoption.md) | Support, accessibility behavior, fallback, or failure-mode evidence needs detailed review |
+| [integration-impact.md](references/integration-impact.md) | Risk triage is connected or uncertain; this expands the mandatory impact-map gate |
